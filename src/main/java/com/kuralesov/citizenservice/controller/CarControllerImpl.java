@@ -1,6 +1,7 @@
 package com.kuralesov.citizenservice.controller;
 
 import com.kuralesov.citizenservice.dto.CarEditRequest;
+import com.kuralesov.citizenservice.dto.CarResponse;
 import com.kuralesov.citizenservice.mapper.CarMapper;
 import com.kuralesov.citizenservice.model.Car;
 import com.kuralesov.citizenservice.service.CarService;
@@ -30,10 +31,7 @@ public class CarControllerImpl implements CarController{
 
     @Override
     @GetMapping("/all")
-    public List<Car> getAll() {
-        return service.getAll();
-    }
-
+    public List<CarResponse> getAll() {return carMapper.map(service.getAll());}
     @Override
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete")

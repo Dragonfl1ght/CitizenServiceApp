@@ -3,6 +3,7 @@ package com.kuralesov.citizenservice.mapper;
 import com.kuralesov.citizenservice.dto.CarResponse;
 import com.kuralesov.citizenservice.dto.CitizenEditRequest;
 import com.kuralesov.citizenservice.dto.CitizenResponse;
+import com.kuralesov.citizenservice.model.Car;
 import com.kuralesov.citizenservice.model.Citizen;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,8 +19,8 @@ public interface CitizenMapper {
     CitizenResponse map(Citizen citizen);
     List<CitizenResponse> map(List<Citizen> citizenList);
     @Named("carListMap")
-    default List<CarResponse> carListMap(Citizen citizen){
+    default List<CarResponse> carListMap(List<Car> carList){
         CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
-        return INSTANCE.map(citizen.getCarList());
+        return INSTANCE.map(carList);
     }
 }

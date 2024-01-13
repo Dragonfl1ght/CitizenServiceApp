@@ -24,4 +24,7 @@ public class Citizen {
     private int age;
     @OneToMany(mappedBy = "owner")
     private List<Car> carList;
+   // @ManyToMany
+   // private List<House> houseList;
+
 }
