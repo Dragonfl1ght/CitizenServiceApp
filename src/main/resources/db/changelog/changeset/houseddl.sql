@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS house(
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     street VARCHAR(255),
     number INT
 )

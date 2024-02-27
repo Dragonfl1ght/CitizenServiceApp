@@ -1,14 +1,19 @@
 package com.kuralesov.citizenservice.service;
 
+import com.kuralesov.citizenservice.client.CitizenClient;
+import com.kuralesov.citizenservice.exception.CarNotFoundException;
 import com.kuralesov.citizenservice.model.Car;
 import com.kuralesov.citizenservice.repository.CarRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 @AllArgsConstructor
+@Profile("origin")
 public class CarServiceImpl implements CarService{
+    private CitizenClient citizenClient;
 
     private CarRepository repository;
     @Override
@@ -18,7 +23,7 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public Car getById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Citizen not found"));
+        return repository.findById(id).orElseThrow(() -> new CarNotFoundException(id));
     }
 
     @Override

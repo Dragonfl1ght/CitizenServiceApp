@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,6 +21,6 @@ public class House {
     @Column(name = "number")
     private Long houseNumber;
 
-    // @ManyToMany(mappedBy = "houseList")
-    //private List<Citizen> citizenList;
+    @ManyToMany(mappedBy = "houseList")
+    private List<Citizen> citizenList;
 }

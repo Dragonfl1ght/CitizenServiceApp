@@ -1,6 +1,5 @@
 ALTER TABLE car
-    ADD COLUMN
-        model VARCHAR(255),
+    ADD COLUMN model VARCHAR(255),
     ADD COLUMN price INT;
     --ADD COLUMN citizen_id,
     --ADD CONSTRAINT FOREIGN KEY(citizen_id) REFERENCES citizen(id);

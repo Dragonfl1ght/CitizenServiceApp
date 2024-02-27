@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CitizenService {
     CitizenResponse create(Citizen citizen);
-    CitizenResponse getById(Long id);
+    Citizen getById(Long id);
 
     List<CitizenResponse> getAllCitizen();
 

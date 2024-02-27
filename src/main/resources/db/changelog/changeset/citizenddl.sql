@@ -8,7 +8,7 @@ ALTER TABLE citizen
     ADD FOREIGN KEY(passport_id) REFERENCES passport(id),
     --FOREIGN KEY (passport_id) REFERENCES passport(id),
     --FOREIGN KEY (car_id) REFERENCES car(id),
-    ADD COLUMN cname VARCHAR(255),
+    ADD COLUMN name VARCHAR(255),
     ADD COLUMN surname VARCHAR(255),
     ADD COLUMN age INT;
 

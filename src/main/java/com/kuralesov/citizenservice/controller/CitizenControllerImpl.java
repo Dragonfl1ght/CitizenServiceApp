@@ -32,15 +32,14 @@ public class CitizenControllerImpl implements CitizenController{
     @Override
     @GetMapping("/{id}")
     public CitizenResponse getById(@PathVariable Long id) {
-        return service.getById(id);
+        return citizenMapper.map(service.getById(id));
     }
 
     @Override
-    @GetMapping("/all")
+
     public List<CitizenResponse> getAllCitizen() {
         return service.getAllCitizen();
     }
-
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

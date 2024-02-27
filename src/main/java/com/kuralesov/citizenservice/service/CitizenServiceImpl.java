@@ -1,6 +1,7 @@
 package com.kuralesov.citizenservice.service;
 
 import com.kuralesov.citizenservice.dto.CitizenResponse;
+import com.kuralesov.citizenservice.exception.CitizenNotFoundException;
 import com.kuralesov.citizenservice.mapper.CitizenMapper;
 import com.kuralesov.citizenservice.model.Citizen;
 import com.kuralesov.citizenservice.repository.CitizenRepository;
@@ -21,8 +22,8 @@ public class CitizenServiceImpl implements CitizenService{
     }
 
     @Override
-    public CitizenResponse getById(Long id) {
-        return citizenMapper.map(repository.findById(id).orElseThrow(() -> new RuntimeException("Citizen not found")));
+    public Citizen getById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new CitizenNotFoundException(id));
     }
 
     @Override

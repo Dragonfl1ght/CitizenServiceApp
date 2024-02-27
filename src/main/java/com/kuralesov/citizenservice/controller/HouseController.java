@@ -1,13 +1,16 @@
 package com.kuralesov.citizenservice.controller;
 
+import com.kuralesov.citizenservice.dto.CitizenResponse;
+import com.kuralesov.citizenservice.dto.HouseResponse;
 import com.kuralesov.citizenservice.model.House;
 
 import java.util.List;
 
 public interface HouseController {
-    House create(House house);
-    House getById(Long id);
-    List<House> getAllHouses();
+    HouseResponse create(House house);
+    HouseResponse getById(Long id);
+    List<HouseResponse> getAllHouses();
+    List<CitizenResponse> getStreetResidents(String street);
     void deleteById(Long id);
-    House edit(House house);
+    HouseResponse addCitizen(Long citizenId, Long houseId);
 }

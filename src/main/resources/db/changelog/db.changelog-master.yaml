@@ -29,3 +29,13 @@ databaseChangeLog:
       id: '6'
       author: 'Kuralesov Egor'
       context: 'create relation table'
+  - include:
+      file: db/changelog/changeset/carddl2.sql
+      id: '7'
+      author: 'Kuralesov Egor'
+      context: 'create owner_id column'
+  - include:
+      file: db/changelog/changeset/c_h_relationship2.sql
+      id: '8'
+      author: 'Kuralesov Egor'
+      context: 'relationship serial change'

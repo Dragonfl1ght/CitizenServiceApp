@@ -1,8 +1,13 @@
 package com.kuralesov.citizenservice.controller;
 
+import com.kuralesov.citizenservice.dto.CitizenResponse;
+import com.kuralesov.citizenservice.dto.HouseResponse;
+import com.kuralesov.citizenservice.mapper.CitizenMapper;
+import com.kuralesov.citizenservice.mapper.HouseMapper;
 import com.kuralesov.citizenservice.model.House;
 import com.kuralesov.citizenservice.service.HouseService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,30 +16,44 @@ import java.util.List;
 @AllArgsConstructor
 public class HouseControllerImpl implements HouseController{
     private HouseService service;
+    private HouseMapper mapper;
+    private CitizenMapper citizenMapper;
+
     @Override
     @PostMapping("/create")
-    public House create(@RequestBody House house) {
-        return service.create(house);
+    @ResponseStatus(HttpStatus.CREATED)
+    public HouseResponse create(@RequestBody House house) {
+        return mapper.map(service.create(house));
     }
 
     @Override
-    public House getById(Long id) {
-        return null;
+    @GetMapping("/{id}")
+    public HouseResponse getById(@PathVariable Long id) {
+        return mapper.map(service.getById(id));
     }
 
     @Override
     @GetMapping("/all")
-    public List<House> getAllHouses() {
-        return service.getAllHouses();
+    public List<HouseResponse> getAllHouses() {
+        return mapper.map(service.getAllHouses());
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    @GetMapping("/residents/{street}")
+    public List<CitizenResponse> getStreetResidents(@PathVariable String street) {
+        return citizenMapper.map(service.getStreetResidents(street));
     }
 
     @Override
-    public House edit(House house) {
-        return null;
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long id) {
+        service.deleteById(id);
+    }
+
+    @Override
+    @PatchMapping("/add/citizen")
+    public HouseResponse addCitizen(@RequestParam(name = "citizenId") Long citizenId, @RequestParam(name = "houseId") Long houseId) {
+        return mapper.map(service.addCitizen(citizenId, houseId));
     }
 }
