@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Profile("origin")
 public class CarServiceImpl implements CarService{
-    private CitizenClient citizenClient;
+   // private CitizenClient citizenClient;
 
     private CarRepository repository;
     @Override
