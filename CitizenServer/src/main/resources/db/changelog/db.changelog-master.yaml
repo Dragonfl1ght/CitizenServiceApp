@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/dbscreating.sql
+      id: '1'
+      author: 'Kuralesov Egor'
+      context: 'create all empty tables'
+  - include:
+      file: db/changelog/changeset/houseddl.sql
+      id: '2'
+      author: 'Kuralesov Egor'
+      context: 'create house table'
+  - include:
+      file: db/changelog/changeset/passportddl.sql
+      id: '3'
+      author: 'Kuralesov Egor'
+      context: 'create passport table'
+  - include:
+      file: db/changelog/changeset/carddl.sql
+      id: '4'
+      author: 'Kuralesov Egor'
+      context: 'create car table'
+  - include:
+      file: db/changelog/changeset/citizenddl.sql
+      id: '5'
+      author: 'Kuralesov Egor'
+      context: 'create citizen table'
+  - include:
+      file: db/changelog/changeset/citizen_house_relationship.sql
+      id: '6'
+      author: 'Kuralesov Egor'
+      context: 'create relation table'
+  - include:
+      file: db/changelog/changeset/carddl2.sql
+      id: '7'
+      author: 'Kuralesov Egor'
+      context: 'create owner_id column'
+  - include:
+      file: db/changelog/changeset/c_h_relationship2.sql
+      id: '8'
+      author: 'Kuralesov Egor'
+      context: 'relationship serial change'

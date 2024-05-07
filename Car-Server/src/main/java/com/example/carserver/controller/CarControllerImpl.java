@@ -15,7 +15,8 @@ public class CarControllerImpl implements CarController{
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public Car create(@RequestBody Car car) {
-        return null;
+        System.out.println("create car");
+    return null;
     }
 
     @Override

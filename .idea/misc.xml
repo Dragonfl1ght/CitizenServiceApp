@@ -7,11 +7,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Car-Server/pom.xml" />
         <option value="$PROJECT_DIR$/MainServer/pom.xml" />
+        <option value="$PROJECT_DIR$/CitizenServer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/CarServer/pom.xml" />
+        <option value="$PROJECT_DIR$/MainServer/pom.xml" />
       </set>
     </option>
   </component>
