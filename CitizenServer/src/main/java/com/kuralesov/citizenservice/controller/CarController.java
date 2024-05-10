@@ -7,7 +7,7 @@ import com.kuralesov.citizenservice.model.Car;
 import java.util.List;
 
 public interface CarController {
-    Car create(Car car);
+    Car create(CarResponse carResponse);
     Car getById(Long id);
     List<CarResponse> getAll();
     void deleteById(Long id);

@@ -19,8 +19,8 @@ public class CarControllerImpl implements CarController{
     @Override
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    public Car create(@RequestBody Car car) {
-        return service.create(car);
+    public Car create(@RequestBody CarResponse carResponse) {
+        return service.create(carMapper.map(carResponse));
     }
 
     @Override

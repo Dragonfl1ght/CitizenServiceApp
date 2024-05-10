@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CarMapper {
     Car map(CarEditRequest editRequest);
+    Car map(CarResponse carResponse);
     CarResponse map(Car car);
     List<CarResponse> map(List<Car> listCar);
 }
