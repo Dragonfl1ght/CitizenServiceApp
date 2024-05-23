@@ -1,15 +1,14 @@
 package com.kuralesov.citizenservice.controller;
 
+import com.kuralesov.citizenservice.dto.CarDto;
 import com.kuralesov.citizenservice.dto.CarEditRequest;
-import com.kuralesov.citizenservice.dto.CarResponse;
-import com.kuralesov.citizenservice.model.Car;
 
 import java.util.List;
 
 public interface CarController {
-    Car create(CarResponse carResponse);
-    Car getById(Long id);
-    List<CarResponse> getAll();
+    CarDto create(CarDto carRequest);
+    CarDto getById(Long id);
+    List<CarDto> getAll();
     void deleteById(Long id);
-    Car edit(CarEditRequest editRequest, Long id);
+    CarDto edit(CarEditRequest editRequest, Long id);
 }

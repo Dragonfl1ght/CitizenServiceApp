@@ -1,6 +1,5 @@
-package com.kuralesov .citizenservice.dto;
+package com.example.carserver.dto;
 
-import com.kuralesov.citizenservice.model.Passport;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,7 @@ import java.util.List;
 public class CitizenResponse {
 
     private Long id;
-    private Passport passport;
+   // private Passport passport;
     private String name;
     private String surname;
     private int age;

@@ -1,9 +1,8 @@
 package com.kuralesov .citizenservice.controller;
 
+import com.kuralesov.citizenservice.dto.CarDto;
 import com.kuralesov.citizenservice.dto.CarEditRequest;
-import com.kuralesov.citizenservice.dto.CarResponse;
 import com.kuralesov.citizenservice.mapper.CarMapper;
-import com.kuralesov.citizenservice.model.Car;
 import com.kuralesov.citizenservice.service.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,20 +18,20 @@ public class CarControllerImpl implements CarController{
     @Override
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    public Car create(@RequestBody CarResponse carResponse) {
-        return service.create(carMapper.map(carResponse));
+    public CarDto create(@RequestBody CarDto carDto) {
+        return carMapper.map(service.create(carMapper.map(carDto)));
     }
 
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Car getById(@PathVariable Long id) {
-        return service.getById(id);
+    public CarDto getById(@PathVariable Long id) {
+        return carMapper.map(service.getById(id));
     }
 
     @Override
     @GetMapping("/all")
-    public List<CarResponse> getAll() {return carMapper.map(service.getAll());}
+    public List<CarDto> getAll() {return carMapper.map(service.getAll());}
     @Override
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete")
@@ -42,8 +41,8 @@ public class CarControllerImpl implements CarController{
 
     @Override
     @PatchMapping("/{id}")
-    public Car edit(@RequestBody CarEditRequest editRequest,@PathVariable Long id) {
-        return service.edit(carMapper.map(editRequest), id);
+    public CarDto edit(@RequestBody CarEditRequest editRequest,@PathVariable Long id) {
+        return  carMapper.map(service.edit(carMapper.map(editRequest), id));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.carserver.model;
 
+import com.example.carserver.dto.CitizenResponse;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
@@ -14,6 +15,7 @@ public class Car {
     private String model;
     private Long manufactureYear;
     private Long price;
+    private CitizenResponse owner;
     @Transient
     private Long insuranceAmount;
 

@@ -1,6 +1,7 @@
 package com.kuralesov.citizenservice.controller;
 
 import com.kuralesov.citizenservice.dto.CitizenEditRequest;
+import com.kuralesov.citizenservice.dto.CitizenRequest;
 import com.kuralesov.citizenservice.dto.CitizenResponse;
 import com.kuralesov.citizenservice.dto.CreatePersonCarRequest;
 import com.kuralesov.citizenservice.mapper.CitizenMapper;
@@ -26,14 +27,14 @@ public class CitizenControllerImpl implements com.kuralesov.citizenservice.contr
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public CitizenResponse create(@RequestBody Citizen citizen){
-        return  service.create(citizen);
+    public CitizenResponse create(@RequestBody CitizenRequest citizenRequest){
+        return citizenMapper.mapResponse(service.create(citizenMapper.map(citizenRequest)));
     }
 
     @PostMapping("/create-with-car")
     @ResponseStatus(HttpStatus.CREATED)
     public CitizenResponse create(@RequestBody CreatePersonCarRequest request){
-        return  service.create(request.getCitizen(), request.getCar());
+        return citizenMapper.mapResponse(service.create(request.getCitizen(), request.getCar()));
     }
     @Override
     @GetMapping("/{id}")
@@ -42,9 +43,8 @@ public class CitizenControllerImpl implements com.kuralesov.citizenservice.contr
     }
 
     @Override
-
     public List<CitizenResponse> getAllCitizen() {
-        return service.getAllCitizen();
+        return citizenMapper.map(service.getAllCitizen());
     }
     @Override
     @DeleteMapping("/{id}")
@@ -56,12 +56,8 @@ public class CitizenControllerImpl implements com.kuralesov.citizenservice.contr
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CitizenResponse update(@PathVariable Long id, @RequestBody Citizen citizen) {
-        return service.update(id, citizen);
+    public CitizenResponse update(@PathVariable Long id, @RequestBody CitizenRequest citizenRequest) {
+        return citizenMapper.map(service.update(id, citizenRequest));
     }
 
-    @Override
-    public CitizenResponse edit(CitizenEditRequest citizenEditRequest, Long id) {
-        return service.edit(citizenMapper.map(citizenEditRequest), id);
-    }
 }
