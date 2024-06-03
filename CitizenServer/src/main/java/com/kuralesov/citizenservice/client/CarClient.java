@@ -1,6 +1,6 @@
 package com.kuralesov.citizenservice.client;
 
-import com.kuralesov.citizenservice.model.Car;
+import com.kuralesov.citizenservice.dto.CarDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface CarClient {
 
     @PostMapping("/car/create")
-    public Car create(@RequestBody Car car);
+    public CarDto create(@RequestBody CarDto carDto);
 }

@@ -1,21 +1,20 @@
 package com.example.carserver.model;
 
-import com.example.carserver.dto.CitizenResponse;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //todo сделать последовательность в базе данных
     private Long id;
     private String model;
     private Long manufactureYear;
     private Long price;
-    private CitizenResponse owner;
+    @Column(name = "owner_id")
+    private Long ownerId;
     @Transient
     private Long insuranceAmount;
 

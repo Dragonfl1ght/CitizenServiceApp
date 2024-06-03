@@ -9,5 +9,5 @@ public class CarDto {
     private Long id;
     private String model;
     private Integer price;
-    private CitizenResponse owner;
+    private Long ownerId;
 }

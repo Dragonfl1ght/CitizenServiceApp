@@ -1,11 +1,9 @@
 package com.kuralesov.citizenservice.controller;
 
-import com.kuralesov.citizenservice.dto.CitizenEditRequest;
 import com.kuralesov.citizenservice.dto.CitizenRequest;
 import com.kuralesov.citizenservice.dto.CitizenResponse;
 import com.kuralesov.citizenservice.dto.CreatePersonCarRequest;
 import com.kuralesov.citizenservice.mapper.CitizenMapper;
-import com.kuralesov.citizenservice.model.Citizen;
 import com.kuralesov.citizenservice.service.CitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,12 +32,12 @@ public class CitizenControllerImpl implements com.kuralesov.citizenservice.contr
     @PostMapping("/create-with-car")
     @ResponseStatus(HttpStatus.CREATED)
     public CitizenResponse create(@RequestBody CreatePersonCarRequest request){
-        return citizenMapper.mapResponse(service.create(request.getCitizen(), request.getCar()));
+        return citizenMapper.mapResponse(service.create(request.getCitizen(), request.getCarDto()));
     }
     @Override
     @GetMapping("/{id}")
     public CitizenResponse getById(@PathVariable Long id) {
-        return citizenMapper.map(service.getById(id));
+        return citizenMapper.mapResponse(service.getById(id));
     }
 
     @Override
@@ -57,7 +55,6 @@ public class CitizenControllerImpl implements com.kuralesov.citizenservice.contr
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CitizenResponse update(@PathVariable Long id, @RequestBody CitizenRequest citizenRequest) {
-        return citizenMapper.map(service.update(id, citizenRequest));
+        return citizenMapper.mapResponse(service.update(id, citizenMapper.map(citizenRequest)));
     }
-
 }

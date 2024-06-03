@@ -23,8 +23,6 @@ public class Citizen {
     private String name;
     private String surname;
     private int age;
-    @OneToMany(mappedBy = "owner")
-    private List<Car> carList;
     @ManyToMany
     @JoinTable(name = "citizen_house_relationship",
             joinColumns = @JoinColumn(name = "citizen_id"),

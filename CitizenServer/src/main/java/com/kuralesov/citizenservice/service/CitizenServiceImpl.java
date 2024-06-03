@@ -1,12 +1,12 @@
 package com.kuralesov .citizenservice.service;
 
 import com.kuralesov.citizenservice.client.CarClient;
+import com.kuralesov.citizenservice.dto.CarDto;
 import com.kuralesov.citizenservice.exception.CitizenNotFoundException;
-import com.kuralesov.citizenservice.mapper.CitizenMapper;
-import com.kuralesov.citizenservice.model.Car;
 import com.kuralesov.citizenservice.model.Citizen;
 import com.kuralesov.citizenservice.repository.CitizenRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,18 +16,19 @@ import java.util.List;
 public class CitizenServiceImpl implements CitizenService {
     private final PassportService passport;
     private final CitizenRepository repository;
-    private final CitizenMapper citizenMapper;
     private final CarClient carClient;
+    private final KafkaTemplate template;
     public Citizen create(Citizen citizen){
         citizen.setPassport(passport.create());
         return repository.save(citizen);
     }
 
     @Override
-    public Citizen create(Citizen citizen, Car car) {
+    public Citizen create(Citizen citizen, CarDto carDto) {
         citizen.setPassport(passport.create());
-        car.setOwner(citizen);
-        citizen.getCarList().add(carClient.create(car));
+        carDto.setOwnerId(citizen.getId());
+        template.send("Kafka", "Hello Kafka");
+        carClient.create(carDto);
         return repository.save(citizen);
     }
 

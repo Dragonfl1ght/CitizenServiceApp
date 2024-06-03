@@ -6,13 +6,12 @@ import com.example.carserver.exceptions.CarNotFoundException;
 import com.example.carserver.model.Car;
 import com.example.carserver.repository.CarRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 @AllArgsConstructor
-@Profile("origin")
+//@Profile("origin")
 public class CarServiceImpl implements CarService {
 
     private CarRepository repository;
