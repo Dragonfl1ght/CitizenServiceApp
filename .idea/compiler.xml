@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Kafka-Server" />
         <module name="eureka-server" />
       </profile>
-      <profile name="Annotation profile for Car-Server" enabled="true">
+      <profile name="Annotation profile for CitizenServer" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -33,6 +34,7 @@
       <module name="Car-Server" options="-parameters" />
       <module name="CarServer" options="-parameters" />
       <module name="CitizenServer" options="-parameters" />
+      <module name="Kafka-Server" options="-parameters" />
       <module name="citizen-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
     </option>

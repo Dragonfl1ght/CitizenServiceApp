@@ -27,6 +27,6 @@ public class KafkaProducerConfig {
     }
     @Bean
     public NewTopic newTopic(){
-        return new NewTopic("Kafka", 1, (short)1);
+        return new NewTopic("create_car", 1, (short)1);
     }
 }

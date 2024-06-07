@@ -8,6 +8,7 @@ import com.kuralesov.citizenservice.repository.CitizenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,12 +25,14 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
+    @Transactional
     public Citizen create(Citizen citizen, CarDto carDto) {
         citizen.setPassport(passport.create());
-        carDto.setOwnerId(citizen.getId());
-        template.send("Kafka", "Hello Kafka");
-        carClient.create(carDto);
-        return repository.save(citizen);
+        Citizen savedCitizen = repository.save(citizen);
+        carDto.setOwnerId(savedCitizen.getId());
+        template.send("create_car", carDto);
+        //carClient.create(carDto);
+        return savedCitizen;
     }
 
     @Override
